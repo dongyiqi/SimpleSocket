@@ -5,6 +5,7 @@
 #include "../../SimpleSocket.h"
 #include "../../PassiveSocket.h"
 #include "../../ActiveSocket.h"
+#pragma comment(lib, "clsocket.lib")
 
 void startSimpleSocketServer()
 {

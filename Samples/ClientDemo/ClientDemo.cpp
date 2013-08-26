@@ -5,6 +5,7 @@
 #include "../../SimpleSocket.h"
 #include "../../PassiveSocket.h"
 #include "../../ActiveSocket.h"
+#pragma comment(lib, "clsocket.lib")
 
 struct UdpHeartPack {
 	char UDPData[16] ;

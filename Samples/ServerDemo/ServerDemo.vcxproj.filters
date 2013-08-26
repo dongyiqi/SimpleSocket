@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="SimpleSocket">
-      <UniqueIdentifier>{1aa40951-5929-4057-bd90-da0bcc511f6a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -27,21 +24,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\ActiveSocket.h">
-      <Filter>SimpleSocket</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Host.h">
-      <Filter>SimpleSocket</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\PassiveSocket.h">
-      <Filter>SimpleSocket</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SimpleSocket.h">
-      <Filter>SimpleSocket</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\StatTimer.h">
-      <Filter>SimpleSocket</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -49,15 +31,6 @@
     </ClCompile>
     <ClCompile Include="ServerDemo.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\ActiveSocket.cpp">
-      <Filter>SimpleSocket</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\PassiveSocket.cpp">
-      <Filter>SimpleSocket</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SimpleSocket.cpp">
-      <Filter>SimpleSocket</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
