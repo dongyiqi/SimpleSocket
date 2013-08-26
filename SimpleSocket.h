@@ -76,7 +76,7 @@
   #include <Ws2tcpip.h>
 
   #define IPTOS_LOWDELAY  0x10  /// 
-
+#pragma comment(lib, "WS2_32.lib")
 #endif
 #include "Host.h"
 #include "StatTimer.h"
