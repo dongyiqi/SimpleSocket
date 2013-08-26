@@ -68,6 +68,10 @@ public:
     ///  @return true if successful connection made, otherwise false.
     virtual bool Open(const uint8 *pAddr, int16 nPort);
 
+	//dyq added to enable udp boardcast
+	//	
+	bool SetBoardCast(bool bEnable, int16 nPort);
+	bool GetMuticast() {return m_bIsBoardcast;};
 private:
 	/// Utility function used to create a TCP connection, called from Open().
     ///  @return true if successful connection made, otherwise false.
@@ -83,6 +87,7 @@ private:
 
  private:
     struct hostent *m_pHE;
+	bool				 m_bIsBoardcast;	  /// is the UDP socket boardcast;
 };
 
 #endif /*  __ACTIVESOCKET_H__  */

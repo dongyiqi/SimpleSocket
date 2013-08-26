@@ -312,3 +312,38 @@ bool CActiveSocket::Open(const uint8 *pAddr, int16 nPort)
 
     return bRetVal;
 }
+
+//------------------------------------------------------------------------------
+//
+// SetBoardCast() 
+//
+//------------------------------------------------------------------------------
+bool CActiveSocket::SetBoardCast(bool bEnable, int16 nPort)
+{
+	bool bRetVal = false;
+
+	if (GetSocketType() == CSimpleSocket::SocketTypeUdp)
+	{
+		m_bIsBoardcast = bEnable;
+		int so_broadcast = bEnable ? 1 : 0;
+		if (SETSOCKOPT(m_socket, SOL_SOCKET, SO_BROADCAST, &so_broadcast, sizeof(so_broadcast)) == CSimpleSocket::SocketError)
+		{
+			TranslateSocketError();
+			bRetVal = false;
+		}
+		else
+		{
+			bRetVal = true;
+			memset(&m_stServerSockaddr, 0, sizeof(m_stServerSockaddr));
+			m_stServerSockaddr.sin_family = AF_INET;
+			m_stServerSockaddr.sin_addr.s_addr =  htonl ( INADDR_BROADCAST );	
+			m_stServerSockaddr.sin_port = htons(nPort);
+		}
+	}
+	else
+	{
+		m_socketErrno = CSimpleSocket::SocketProtocolError;
+	}
+
+	return bRetVal;
+}
