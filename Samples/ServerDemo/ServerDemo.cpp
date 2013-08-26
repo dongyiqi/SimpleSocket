@@ -15,14 +15,14 @@ void startSimpleSocketServer()
 	pServerSocket->SetNonblocking();
 	//pServerSocket->SetBoardCast(true);
 	bool bOk = pServerSocket->Listen(NULL, 8888);
+
 	while (true)
 	{
-		if (pServerSocket->Select())
+		if (pServerSocket->Select(CSimpleSocket::Receives))
 		{
 			int32 nData = pServerSocket->Receive(800);
 			if (nData > 0)
 			{
-				pServerSocket->Select();
 				uint8* pClientAddr = pServerSocket->GetClientAddr();
 				int16 nClientPort = pServerSocket->GetClientPort();
 

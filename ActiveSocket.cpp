@@ -113,7 +113,7 @@ bool CActiveSocket::ConnectTCP(const uint8 *pAddr, int16 nPort)
             ((GetSocketError() == CSimpleSocket::SocketEwouldblock) || 
 	     (GetSocketError() == CSimpleSocket::SocketEinprogress)))
         {
-            bRetVal = Select(GetConnectTimeoutSec(), GetConnectTimeoutUSec());
+            bRetVal = Select(GetConnectTimeoutSec(), GetConnectTimeoutUSec(), Both);
         }
     }
     else
