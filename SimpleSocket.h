@@ -49,7 +49,7 @@
 #include <stdarg.h>
 #include <errno.h>
 
-#if defined(_LINUX) || defined (_DARWIN)
+#if defined(_LINUX) || defined (_DARWIN) || defined (CC_TARGET_OS_IPHONE)
   #include <sys/socket.h>
   #include <netinet/in.h>
   #include <arpa/inet.h>
@@ -57,14 +57,14 @@
   #include <netinet/ip.h>
   #include <netdb.h>
 #endif
-#ifdef _LINUX
+#if defined (_LINUX)
   #include <linux/if_packet.h>
   #include <linux/if_packet.h>
   #include <linux/if_ether.h>
   #include <linux/if.h>
   #include <sys/sendfile.h>
 #endif
-#if defined(_LINUX) || defined (_DARWIN)
+#if defined(_LINUX) || defined (_DARWIN)|| defined (CC_TARGET_OS_IPHONE)
   #include <sys/time.h>
   #include <sys/uio.h>
   #include <unistd.h>	
@@ -74,9 +74,9 @@
   #include <io.h>
   #include <winsock2.h>
   #include <Ws2tcpip.h>
-
-  #define IPTOS_LOWDELAY  0x10  /// 
 #pragma comment(lib, "WS2_32.lib")
+  #define IPTOS_LOWDELAY  0x10  /// 
+
 #endif
 #include "Host.h"
 #include "StatTimer.h"
@@ -104,8 +104,8 @@ public:
         Receives = SHUT_RD, ///< Shutdown passive socket.
         Sends = SHUT_WR,    ///< Shutdown active socket.
         Both = SHUT_RDWR    ///< Shutdown both active and passive sockets.
-    } CShutdownMode, CSelectMode; 
-	
+    } CShutdownMode; 
+
     /// Defines the socket types defined by CSimpleSocket class.
     typedef enum  
     {
@@ -177,9 +177,8 @@ public:
     /// see whether some of their descriptors are ready for reading, are ready 
     /// for writing, or have an exceptional condition pending, respectively.
 	/// Block until an event happens on the specified file descriptors.
-	/// @param nSelectMode check write read of both status of the socket
     /// @return true if socket has data ready, or false if not ready or timed out.
-    virtual bool Select(CSelectMode nSeleceMode) { return Select(0,0, nSeleceMode); };
+    virtual bool Select(void) { return Select(0,0); };
 
     /// Examine the socket descriptor sets currently owned by the instance of
     /// the socket class (the readfds, writefds, and errorfds parameters) to 
@@ -187,9 +186,8 @@ public:
     /// for writing, or have an exceptional condition pending, respectively.
 	/// @param nTimeoutSec timeout in seconds for select.
     /// @param nTimeoutUSec timeout in micro seconds for select.
-	/// @param nSelectMode check write read of both status of the socket
     /// @return true if socket has data ready, or false if not ready or timed out.
-    virtual bool Select(int32 nTimeoutSec, int32 nTimeoutUSec, CSelectMode nSelectMode);
+    virtual bool Select(int32 nTimeoutSec, int32 nTimeoutUSec);
 
     /// Does the current instance of the socket object contain a valid socket
     /// descriptor.
@@ -348,7 +346,7 @@ public:
 
     /// Return true if socket is multicast or false is socket is unicast
     /// @return true if multicast is enabled
-    bool GetMulticast() { return m_bIsMulticast; };
+    bool GetMulticast() { return m_bIsMulticast; };	
 
     /// Gets the timeout value that specifies the maximum number of seconds a
     /// a call to CSimpleSocket::Send waits until it completes. 

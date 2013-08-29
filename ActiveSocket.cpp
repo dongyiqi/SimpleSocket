@@ -113,7 +113,7 @@ bool CActiveSocket::ConnectTCP(const uint8 *pAddr, int16 nPort)
             ((GetSocketError() == CSimpleSocket::SocketEwouldblock) || 
 	     (GetSocketError() == CSimpleSocket::SocketEinprogress)))
         {
-            bRetVal = Select(GetConnectTimeoutSec(), GetConnectTimeoutUSec(), Both);
+            bRetVal = Select(GetConnectTimeoutSec(), GetConnectTimeoutUSec());
         }
     }
     else
@@ -325,7 +325,7 @@ bool CActiveSocket::SetBoardCast(bool bEnable, int16 nPort)
 	if (GetSocketType() == CSimpleSocket::SocketTypeUdp)
 	{
 		m_bIsBoardcast = bEnable;
-		int so_broadcast = bEnable ? 1 : 0;
+		int so_broadcast = 1;
 		if (SETSOCKOPT(m_socket, SOL_SOCKET, SO_BROADCAST, &so_broadcast, sizeof(so_broadcast)) == CSimpleSocket::SocketError)
 		{
 			TranslateSocketError();

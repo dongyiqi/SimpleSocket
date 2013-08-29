@@ -190,7 +190,8 @@ bool CSimpleSocket::SetMulticast(bool bEnable, uint8 multicastTTL)
     return bRetVal;
 }
 
-
+
+
 //------------------------------------------------------------------------------
 //
 // SetSocketDscp() 
@@ -855,9 +856,13 @@ int32 CSimpleSocket::SendFile(int32 nOutFd, int32 nInFd, off_t *pOffset, int32 n
 		
     *pOffset += nOutCount;
 
-#else
+#elif defined (_LINUX)
     nOutCount = sendfile(nOutFd, nInFd, pOffset, (size_t)nCount);
-#endif	  
+#elif defined (CC_TARGET_OS_IPHONE)
+    //not implemented yet
+#else
+    //not implemented yet
+#endif
     TranslateSocketError();
 
     return nOutCount;
@@ -996,7 +1001,7 @@ void CSimpleSocket::TranslateSocketError(void)
 // Select()
 //
 //------------------------------------------------------------------------------
-bool CSimpleSocket::Select(int32 nTimeoutSec, int32 nTimeoutUSec, CSelectMode nSeleceMode)
+bool CSimpleSocket::Select(int32 nTimeoutSec, int32 nTimeoutUSec)
 {
     bool            bRetVal = false;
     struct timeval *pTimeout = NULL;
@@ -1036,10 +1041,8 @@ bool CSimpleSocket::Select(int32 nTimeoutSec, int32 nTimeoutUSec, CSelectMode nS
     //----------------------------------------------------------------------
     // If a file descriptor (read/write) is set then check the
     // socket error (SO_ERROR) to see if there is a pending error.
-	//dyq add check nSelectMode type 2013-08-26
     //----------------------------------------------------------------------
-    else if ((FD_ISSET(m_socket, &m_readFds) && (nSeleceMode == Receives || nSeleceMode == Both) )
-		|| (FD_ISSET(m_socket, &m_writeFds) && (nSeleceMode == Sends || nSeleceMode == Both) ))
+    else if ((FD_ISSET(m_socket, &m_readFds)) || (FD_ISSET(m_socket, &m_writeFds)))
     {
         int32 nLen = sizeof(nError);
         

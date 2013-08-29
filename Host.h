@@ -45,7 +45,9 @@
 #define __HOST_H__
 
 #include <limits.h>
+///predefine ios
 
+///
 #ifdef __cplusplus
 extern "C"
 {
@@ -61,7 +63,7 @@ extern "C"
   #define __WORDSIZE 32
 #endif
 
-#ifdef _LINUX
+#if defined (_LINUX) || defined (CC_TARGET_OS_IPHONE)
     typedef unsigned char  uint8;
     typedef char           int8;
     typedef unsigned short uint16;
@@ -169,7 +171,7 @@ extern "C"
 #define GETHOSTBYNAME(a)       gethostbyname((const char *)a)
 #endif
 
-#ifdef _LINUX
+#if defined (_LINUX) || defined (CC_TARGET_OS_IPHONE)
 #define ACCEPT(a,b,c)          accept(a,b,c)
 #define CONNECT(a,b,c)         connect(a,b,c)
 #define CLOSE(a)               close(a)

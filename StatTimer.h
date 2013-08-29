@@ -50,7 +50,7 @@
   #include <time.h>
 #endif 
 
-#ifdef _LINUX
+#ifdef _LINUX || CC_TARGET_OS_IPHONE
   #include <stdio.h>
   #include <sys/time.h>
 #endif
