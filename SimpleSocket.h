@@ -104,7 +104,7 @@ public:
         Receives = SHUT_RD, ///< Shutdown passive socket.
         Sends = SHUT_WR,    ///< Shutdown active socket.
         Both = SHUT_RDWR    ///< Shutdown both active and passive sockets.
-    } CShutdownMode; 
+    } CShutdownMode, CSelectMode; 
 
     /// Defines the socket types defined by CSimpleSocket class.
     typedef enum  
@@ -178,7 +178,7 @@ public:
     /// for writing, or have an exceptional condition pending, respectively.
 	/// Block until an event happens on the specified file descriptors.
     /// @return true if socket has data ready, or false if not ready or timed out.
-    virtual bool Select(void) { return Select(0,0); };
+	virtual bool Select(CSelectMode nSeleceMode) { return Select(0,0, nSeleceMode); };
 
     /// Examine the socket descriptor sets currently owned by the instance of
     /// the socket class (the readfds, writefds, and errorfds parameters) to 
@@ -187,7 +187,7 @@ public:
 	/// @param nTimeoutSec timeout in seconds for select.
     /// @param nTimeoutUSec timeout in micro seconds for select.
     /// @return true if socket has data ready, or false if not ready or timed out.
-    virtual bool Select(int32 nTimeoutSec, int32 nTimeoutUSec);
+    virtual bool Select(int32 nTimeoutSec, int32 nTimeoutUSec, CSelectMode nSelectMode);
 
     /// Does the current instance of the socket object contain a valid socket
     /// descriptor.

@@ -37,6 +37,12 @@ void startSimpleSocketServer()
 	}
 	delete pServerSocket;
 }
+
+struct event_base* base;
+#define PORT 25341
+#define BACKLOG 5
+#define MEM_SIZE 1024
+
 void startServer()
 {
 	WSADATA wsaData;                                   //指向WinSocket信息结构的指针
@@ -60,6 +66,7 @@ void startServer()
 		printf("Can't bind socket to local port!Program stop.\n");//初始化失败返回-1
 		return ;
 	}
+
 	while(1)
 	{  
 		nSize = sizeof ( SOCKADDR_IN );

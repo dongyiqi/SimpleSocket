@@ -1001,7 +1001,7 @@ void CSimpleSocket::TranslateSocketError(void)
 // Select()
 //
 //------------------------------------------------------------------------------
-bool CSimpleSocket::Select(int32 nTimeoutSec, int32 nTimeoutUSec)
+bool CSimpleSocket::Select(int32 nTimeoutSec, int32 nTimeoutUSec, CSelectMode nSeleceMode)
 {
     bool            bRetVal = false;
     struct timeval *pTimeout = NULL;
@@ -1042,8 +1042,9 @@ bool CSimpleSocket::Select(int32 nTimeoutSec, int32 nTimeoutUSec)
     // If a file descriptor (read/write) is set then check the
     // socket error (SO_ERROR) to see if there is a pending error.
     //----------------------------------------------------------------------
-    else if ((FD_ISSET(m_socket, &m_readFds)) || (FD_ISSET(m_socket, &m_writeFds)))
-    {
+	else if ((FD_ISSET(m_socket, &m_readFds) && (nSeleceMode == Receives || nSeleceMode == Both) )
+	   || (FD_ISSET(m_socket, &m_writeFds) && (nSeleceMode == Sends || nSeleceMode == Both) ))
+	{
         int32 nLen = sizeof(nError);
         
         if (GETSOCKOPT(m_socket, SOL_SOCKET, SO_ERROR, &nError, &nLen) == 0)

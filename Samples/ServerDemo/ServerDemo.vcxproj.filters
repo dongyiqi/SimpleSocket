@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="libevent">
+      <UniqueIdentifier>{0f4b6257-ff15-436f-9a40-5891a5571221}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -23,6 +26,78 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\bufferevent-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\changelist-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\defer-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\evbuffer-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\evdns.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\event.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\event-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\evhttp.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\evmap-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\evrpc.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\evrpc-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\evsignal-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\evthread-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\evutil.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\ht-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\http-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\iocp-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\ipv6-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\log-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\minheap-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\mm-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\ratelim-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\strlcpy-internal.h">
+      <Filter>libevent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libevent\util-internal.h">
+      <Filter>libevent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -54,6 +54,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libevent.lib;libevent_core.lib;libevent_extras.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -76,6 +77,30 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\libevent\bufferevent-internal.h" />
+    <ClInclude Include="..\..\libevent\changelist-internal.h" />
+    <ClInclude Include="..\..\libevent\defer-internal.h" />
+    <ClInclude Include="..\..\libevent\evbuffer-internal.h" />
+    <ClInclude Include="..\..\libevent\evdns.h" />
+    <ClInclude Include="..\..\libevent\event-internal.h" />
+    <ClInclude Include="..\..\libevent\event.h" />
+    <ClInclude Include="..\..\libevent\evhttp.h" />
+    <ClInclude Include="..\..\libevent\evmap-internal.h" />
+    <ClInclude Include="..\..\libevent\evrpc-internal.h" />
+    <ClInclude Include="..\..\libevent\evrpc.h" />
+    <ClInclude Include="..\..\libevent\evsignal-internal.h" />
+    <ClInclude Include="..\..\libevent\evthread-internal.h" />
+    <ClInclude Include="..\..\libevent\evutil.h" />
+    <ClInclude Include="..\..\libevent\ht-internal.h" />
+    <ClInclude Include="..\..\libevent\http-internal.h" />
+    <ClInclude Include="..\..\libevent\iocp-internal.h" />
+    <ClInclude Include="..\..\libevent\ipv6-internal.h" />
+    <ClInclude Include="..\..\libevent\log-internal.h" />
+    <ClInclude Include="..\..\libevent\minheap-internal.h" />
+    <ClInclude Include="..\..\libevent\mm-internal.h" />
+    <ClInclude Include="..\..\libevent\ratelim-internal.h" />
+    <ClInclude Include="..\..\libevent\strlcpy-internal.h" />
+    <ClInclude Include="..\..\libevent\util-internal.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
